@@ -1,0 +1,13 @@
+# Redirigir URLs sin .php a la versión con .php
+
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+# Bloquear el acceso a cualquier URL que contenga .php
+
+RewriteCond %{THE_REQUEST} \s/.*\.php [NC]
+
+RewriteRule ^ - [R=404,L]
